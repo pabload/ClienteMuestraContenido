@@ -11,35 +11,19 @@ import java.util.logging.Logger;
 public class PrincipalCliente {
 
     public static void main(String[] args) throws IOException {
-        iniciarCliente(args[0]);
-       /* Socket socket = new Socket("127.0.0.1",Integer.parseInt(args[0]));
-        PrintWriter escritor = new PrintWriter(socket.getOutputStream(), true);
-        BufferedReader lector = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        String datos;
-        String datosEntrada = "";
-        String todo = "";
-        Scanner scanner = new Scanner(System.in);
-        datos = scanner.nextLine();
-        escritor.println(datos);
-        //while (true) {
-            datosEntrada = lector.readLine();
-            if ((datosEntrada.equals(""))) {
-                System.exit(0);
-            }
-            System.out.println(datosEntrada);
-       // }*/
+        iniciarCliente(args[0],args[1]);
 
     }
-    public static void iniciarCliente(String puerto){
+    public static void iniciarCliente(String ip,String puerto){
         try {
-            CrearCliente(puerto);
+            CrearCliente(ip,puerto);
         } catch (Exception e) {
            System.out.println("Error al iniciar cliente "+e);
         }
     }
-    public static void CrearCliente(String puerto){
+    public static void CrearCliente(String ip,String puerto){
         try {
-            Socket socket = new Socket("127.0.0.1",Integer.parseInt(puerto));
+            Socket socket = new Socket(ip,Integer.parseInt(puerto));
             ConfigurarCliente(socket);
         } catch (IOException ex) {
              System.out.println("Error al crear socket "+ex);
